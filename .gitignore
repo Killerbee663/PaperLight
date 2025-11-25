@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.env
+*.db
+venv/
+node_modules/
+organic-vortex-477908-r8-4c076e7c0ec9.json
+app.db
+logs/

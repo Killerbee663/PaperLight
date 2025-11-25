@@ -1,0 +1,300 @@
+# Romanian translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-11-18 17:45+0200\n"
+"PO-Revision-Date: 2025-11-09 22:22+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ro\n"
+"Language-Team: ro <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100"
+" < 20)) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/__init__.py:24
+msgid "Please log in to access this page."
+msgstr "Va rugam sa va autentificati pentru a accesa aceasta pagina."
+
+#: app/translate.py:23
+msgid "Error: the translation service failed."
+msgstr "Eroare: serviciul de traducere a eșuat."
+
+#: app/auth/email.py:8
+msgid "[PaperLight] Reset Your Password"
+msgstr "[PaperLight] Resetati Parola"
+
+#: app/auth/forms.py:11 app/auth/forms.py:18 app/main/forms.py:12
+msgid "Username"
+msgstr "Nume de utilizator"
+
+#: app/auth/forms.py:12 app/auth/forms.py:20 app/auth/forms.py:43
+msgid "Password"
+msgstr "Parola"
+
+#: app/auth/forms.py:13
+msgid "Remember Me"
+msgstr "Retineti-ma"
+
+#: app/auth/forms.py:14 app/auth/routes.py:30 app/templates/auth/login.html:5
+msgid "Sign In"
+msgstr "Autentificare"
+
+#: app/auth/forms.py:19 app/auth/forms.py:38
+msgid "Email"
+msgstr "Email"
+
+#: app/auth/forms.py:22 app/auth/forms.py:45
+msgid "Repeat Password"
+msgstr "Repetati Parola"
+
+#: app/auth/forms.py:24 app/auth/routes.py:51
+#: app/templates/auth/register.html:5
+msgid "Register"
+msgstr "Inregistrare"
+
+#: app/auth/forms.py:29 app/main/forms.py:26
+msgid "Please use a different username."
+msgstr "Va rugam sa folositi un alt nume de utilizator."
+
+#: app/auth/forms.py:34
+msgid "Please use a different email address."
+msgstr "Va rugam sa folositi o alta adresa de email"
+
+#: app/auth/forms.py:39 app/auth/forms.py:47
+msgid "Request Password Reset"
+msgstr "Solicitati Resetarea Parolei"
+
+#: app/auth/routes.py:23
+msgid "Invalid username or password"
+msgstr "Nume de utilizator sau parola invalida"
+
+#: app/auth/routes.py:49
+msgid "Congratulations, you are now a registered user!"
+msgstr "Felicitari, sunteti acum un utilizator inregistrat!"
+
+#: app/auth/routes.py:66
+msgid "Check your email for the instructions to reset your password"
+msgstr "Verificati-va emailul pentru instructiunile de resetare a parolei"
+
+#: app/auth/routes.py:69 app/templates/auth/reset_password_request.html:5
+msgid "Reset Password"
+msgstr "Resetare Parola"
+
+#: app/auth/routes.py:83
+msgid "Your password has been reset."
+msgstr "Parola dumneavoastra a fost resetata."
+
+#: app/main/forms.py:13
+msgid "About me"
+msgstr "Despre mine"
+
+#: app/main/forms.py:14 app/main/forms.py:37 app/main/forms.py:52
+msgid "Submit"
+msgstr "Trimite"
+
+#: app/main/forms.py:35
+msgid "Say something"
+msgstr "Spune ceva"
+
+#: app/main/forms.py:41 app/main/routes.py:212
+#, fuzzy
+msgid "Search"
+msgstr "Utilizator"
+
+#: app/main/forms.py:51
+msgid "Message"
+msgstr "Mesaj"
+
+#: app/main/routes.py:45
+msgid "Your post is now live!"
+msgstr "Postarea dumneavoastra este acum publicata!"
+
+#: app/main/routes.py:58 app/templates/base.html:35
+msgid "Home"
+msgstr "Acasa"
+
+#: app/main/routes.py:78 app/templates/base.html:38
+msgid "Explore"
+msgstr "Explorati"
+
+#: app/main/routes.py:131
+msgid "Your changes have been saved."
+msgstr "Modificarile dumneavoastra au fost salvate."
+
+#: app/main/routes.py:136 app/templates/edit_profile.html:5
+msgid "Edit Profile"
+msgstr "Editati Profilul"
+
+#: app/main/routes.py:146 app/main/routes.py:166
+#, python-format
+msgid "User %(username)s not found."
+msgstr "Utilizatorul %(username)s nu a fost gasit."
+
+#: app/main/routes.py:149
+msgid "You cannot follow yourself!"
+msgstr "Nu va puteti urmari singur!"
+
+#: app/main/routes.py:153
+#, python-format
+msgid "You are following %(username)s!"
+msgstr "Urmariti pe %(username)s!"
+
+#: app/main/routes.py:169
+msgid "You cannot unfollow yourself!"
+msgstr "Nu va puteti dezabona singur!"
+
+#: app/main/routes.py:173
+#, python-format
+msgid "You are not following %(username)s."
+msgstr "Nu urmariti pe %(username)s."
+
+#: app/main/routes.py:229
+#, fuzzy
+msgid "Your message has been sent."
+msgstr "Parola dumneavoastra a fost resetata."
+
+#: app/main/routes.py:232
+msgid "Send Message"
+msgstr "Trimite Mesaj"
+
+#: app/templates/_post.html:14
+#, python-format
+msgid "%(username)s said %(when)s"
+msgstr "%(username)s a spus %(when)s"
+
+#: app/templates/_post.html:25
+msgid "Translate"
+msgstr "Traduceți"
+
+#: app/templates/base.html:8
+msgid "Welcome to PaperLight"
+msgstr "Bine ati venit pe PaperLight"
+
+#: app/templates/base.html:51
+msgid "Login"
+msgstr "Autentificare"
+
+#: app/templates/base.html:55 app/templates/messages.html:4
+msgid "Messages"
+msgstr "Mesaje"
+
+#: app/templates/base.html:65
+msgid "Profile"
+msgstr "Profil"
+
+#: app/templates/base.html:68
+msgid "Logout"
+msgstr "Deconectare"
+
+#: app/templates/index.html:5
+#, python-format
+msgid "Hi, %(username)s!"
+msgstr "Buna, %(username)s!"
+
+#: app/templates/index.html:17 app/templates/search.html:12
+#: app/templates/user.html:45
+msgid "Newer posts"
+msgstr "Postari mai noi"
+
+#: app/templates/index.html:24 app/templates/search.html:17
+#: app/templates/user.html:52
+msgid "Older posts"
+msgstr "Postari mai vechi"
+
+#: app/templates/messages.html:12
+#, fuzzy
+msgid "Newer messages"
+msgstr "Postari mai noi"
+
+#: app/templates/messages.html:17
+#, fuzzy
+msgid "Older messages"
+msgstr "Postari mai vechi"
+
+#: app/templates/search.html:4
+msgid "Search Results"
+msgstr "Rezultate Căutare"
+
+#: app/templates/send_message.html:5
+#, python-format
+msgid "Send Message to %(recipient)s"
+msgstr "Trimite mesaj către %(recipient)s"
+
+#: app/templates/user.html:8
+msgid "User"
+msgstr "Utilizator"
+
+#: app/templates/user.html:11 app/templates/user_popup.html:7
+msgid "Last seen on"
+msgstr "Vazut ultima data pe"
+
+#: app/templates/user.html:13 app/templates/user_popup.html:9
+#, python-format
+msgid "%(count)d followers"
+msgstr "%(count)d urmaritori"
+
+#: app/templates/user.html:13 app/templates/user_popup.html:9
+#, python-format
+msgid "%(count)d following"
+msgstr "%(count)d urmăreste"
+
+#: app/templates/user.html:15
+msgid "Edit your profile"
+msgstr "Editati-va profilul"
+
+#: app/templates/user.html:20 app/templates/user_popup.html:15
+msgid "Follow"
+msgstr "Urmariti"
+
+#: app/templates/user.html:27 app/templates/user_popup.html:22
+msgid "Unfollow"
+msgstr "Nu mai urmariti"
+
+#: app/templates/user.html:32
+msgid "Send private message"
+msgstr "Trimite mesaj privat"
+
+#: app/templates/auth/login.html:7
+msgid "New User?"
+msgstr "Utilizator nou?"
+
+#: app/templates/auth/login.html:7
+msgid "Click to Register!"
+msgstr "Click pentru Inregistrare!"
+
+#: app/templates/auth/login.html:9
+msgid "Forgot Your Password?"
+msgstr "Ati uitat Parola?"
+
+#: app/templates/auth/login.html:10
+msgid "Click to Reset It"
+msgstr "Click pentru a o Reseta"
+
+#: app/templates/auth/reset_password.html:5
+msgid "Reset Your Password"
+msgstr "Resetati Parola"
+
+#: app/templates/errors/404.html:2
+msgid "Not Found"
+msgstr "Nu a fost gasit"
+
+#: app/templates/errors/404.html:3 app/templates/errors/500.html:4
+msgid "Back"
+msgstr "Inapoi"
+
+#: app/templates/errors/500.html:2
+msgid "An unexpected error has occurred"
+msgstr "A aparut o eroare neasteptata"
+
+#: app/templates/errors/500.html:3
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "Administratorul a fost notificat. Ne cerem scuze pentru neplaceri!"
+
