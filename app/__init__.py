@@ -9,13 +9,15 @@ from flask_mail import Mail
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from config import Config
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, transport
 
 
 def get_locale():
     return request.accept_languages.best_match(current_app.config["LANGUAGES"])
     # return 'ro'
 
+
+os.environ["ELASTIC_CLIENT_APIVERSIONING"] = "0"
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -25,6 +27,9 @@ login.login_message = _l("Please log in to access this page.")
 mail = Mail()
 moment = Moment()
 babel = Babel()
+
+
+transport._ProductChecker.raise_error = lambda self, state: None
 
 
 def create_app(config_class=Config):
@@ -37,16 +42,12 @@ def create_app(config_class=Config):
     mail.init_app(app)
     moment.init_app(app)
     babel.init_app(app, locale_selector=get_locale)
-    app.elasticsearch = (
-        Elasticsearch(
-            [app.config["ELASTICSEARCH_URL"]],
-            verify_certs=False,
-            ssl_show_warn=False,
-            headers={"accept": "application/json", "content-type": "application/json"},
+    if app.elasticsearch:
+        app.elasticsearch = Elasticsearch(
+            [app.config["ELASTICSEARCH_URL"]], verify_certs=False, ssl_show_warn=False
         )
-        if app.config["ELASTICSEARCH_URL"]
-        else None
-    )
+    else:
+        app.elasticsearch = None
 
     from app.errors import bp as errors_bp
 
