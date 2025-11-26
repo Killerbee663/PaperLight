@@ -10,11 +10,12 @@ from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from config import Config
 from elasticsearch import Elasticsearch
+from app.email import SendGridHandler
 
 
 def get_locale():
     return request.accept_languages.best_match(current_app.config["LANGUAGES"])
-    #return 'ro'
+    # return 'ro'
 
 
 db = SQLAlchemy()
@@ -60,38 +61,22 @@ def create_app(config_class=Config):
     app.register_blueprint(cli_bp)
 
     if not app.debug and not app.testing:
-        if app.config["MAIL_SERVER"]:
-            auth = None
-            if app.config["MAIL_USERNAME"] or app.config["MAIL_PASSWORD"]:
-                auth = (app.config["MAIL_USERNAME"], app.config["MAIL_PASSWORD"])
-            secure = None
-            if app.config["MAIL_USE_TLS"]:
-                secure = ()
+        if os.environ.get("SENDGRID_API_KEY"):
 
-            print(f"Setting up email handler:")
-            print(f"MAIL_SERVER: {app.config['MAIL_SERVER']}")
-            print(f"MAIL_PORT: {app.config['MAIL_PORT']}")
-            print(f"MAIL_USE_TLS: {app.config['MAIL_USE_TLS']}")
-            print(f"MAIL_USERNAME: {app.config['MAIL_USERNAME']}")
-            print(f"ADMINS: {app.config['ADMINS']}")
-            print(f"Auth: {auth is not None}")
-            print(f"Secure: {secure}")
-
-
-            mail_handler = SMTPHandler(
-                mailhost=(app.config["MAIL_SERVER"], app.config["MAIL_PORT"]),
-                fromaddr="no-reply@" + app.config["MAIL_SERVER"],
-                toaddrs=app.config["ADMINS"],
+            sendgrid_handler = SendGridHandler(
+                api_key=os.environ.get("SENDGRID_API_KEY"),
+                from_email=app.config["MAIL_USERNAME"],
+                to_emails=app.config["ADMINS"],
                 subject="PaperLight Failure",
-                credentials=auth,
-                secure=secure,
             )
 
-            mail_handler.setLevel(logging.ERROR)
-            app.logger.addHandler(mail_handler)
-            print("Email handler added successfully!")
-        else:
-            print("MAIL_SERVER not configured - email handler not initialized")
+            sendgrid_handler.setLevel(logging.ERROR)
+            sendgrid_handler.setFormatter(
+                logging.Formatter(
+                    "%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]"
+                )
+            )
+            app.logger.addHandler(sendgrid_handler)
 
         if not os.path.exists("logs"):
             os.mkdir("logs")
