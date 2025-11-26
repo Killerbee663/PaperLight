@@ -41,7 +41,7 @@ def create_app(config_class=Config):
     app.elasticsearch = (
         Elasticsearch(
             [app.config["ELASTICSEARCH_URL"]],
-            verify_certs=True,
+            verify_certs=False,
             ssl_show_warn=False
         )
         if app.config["ELASTICSEARCH_URL"]
