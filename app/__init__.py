@@ -10,7 +10,7 @@ from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from config import Config
 from elasticsearch import Elasticsearch
-from app.email import SendGridHandler
+
 
 
 def get_locale():
@@ -62,6 +62,7 @@ def create_app(config_class=Config):
 
     if not app.debug and not app.testing:
         if os.environ.get("SENDGRID_API_KEY"):
+            from app.email import SendGridHandler
 
             sendgrid_handler = SendGridHandler(
                 api_key=os.environ.get("SENDGRID_API_KEY"),
