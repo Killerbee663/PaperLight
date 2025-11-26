@@ -39,12 +39,24 @@ def send_async_email(app, msg):
 
 
 def send_email(subject, sender, recipients, text_body, html_body):
+
+    print(f"=== send_email called ===")
+    print(f"Subject: {subject}")
+    print(f"From: {sender}")
+    print(f"To: {recipients}")
+
+
     api_key = os.environ.get("SENDGRID_API_KEY")
+    print(f"SendGrid API Key exists: {api_key is not None}")
+    print(f"API Key length: {len(api_key) if api_key else 0}")
+
     if not api_key:
         current_app.logger.error("SENDGRID_API_KEY not configured - cannot send email")
+        print("ERROR: No SendGrid API key found!")
         return
     
     try:
+        print("Creating SendGrid message...")
         message = Mail(
             from_email=sender,
             to_emails=recipients,
@@ -53,8 +65,15 @@ def send_email(subject, sender, recipients, text_body, html_body):
         )
         message.add_content(text_body, 'text/plain')
 
+        print("Sending via SendGrid API...")
         sg = SendGridAPIClient(api_key)
         response = sg.send(message)
+        print(f"SendGrid response status: {response.status_code}")
+        print(f"SendGrid response body: {response.body}")
+        print(f"SendGrid response headers: {response.headers}")
         current_app.logger.info(f"Email sent successfully: {response.status_code}")
     except Exception as e:
+        print(f"ERROR sending email: {e}")
         current_app.logger.error(f"Failed to send email: {e}")
+        import traceback
+        traceback.print_exc()
