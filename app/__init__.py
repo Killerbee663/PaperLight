@@ -12,7 +12,6 @@ from config import Config
 from elasticsearch import Elasticsearch
 
 
-
 def get_locale():
     return request.accept_languages.best_match(current_app.config["LANGUAGES"])
     # return 'ro'
@@ -42,7 +41,8 @@ def create_app(config_class=Config):
         Elasticsearch(
             [app.config["ELASTICSEARCH_URL"]],
             verify_certs=False,
-            ssl_show_warn=False
+            ssl_show_warn=False,
+            headers={"accept": "application/json", "content-type": "application/json"},
         )
         if app.config["ELASTICSEARCH_URL"]
         else None
