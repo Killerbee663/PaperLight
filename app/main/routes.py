@@ -269,3 +269,8 @@ def notifications():
         {"name": n.name, "data": n.get_data(), "timestamp": n.timestamp}
         for n in notifications
     ]
+
+@bp.route("/test-error")
+@login_required
+def test_error():
+    raise Exception("This is a test to check email")
