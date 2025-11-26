@@ -67,6 +67,17 @@ def create_app(config_class=Config):
             secure = None
             if app.config["MAIL_USE_TLS"]:
                 secure = ()
+
+            print(f"Setting up email handler:")
+            print(f"MAIL_SERVER: {app.config['MAIL_SERVER']}")
+            print(f"MAIL_PORT: {app.config['MAIL_PORT']}")
+            print(f"MAIL_USE_TLS: {app.config['MAIL_USE_TLS']}")
+            print(f"MAIL_USERNAME: {app.config['MAIL_USERNAME']}")
+            print(f"ADMINS: {app.config['ADMINS']}")
+            print(f"Auth: {auth is not None}")
+            print(f"Secure: {secure}")
+
+
             mail_handler = SMTPHandler(
                 mailhost=(app.config["MAIL_SERVER"], app.config["MAIL_PORT"]),
                 fromaddr="no-reply@" + app.config["MAIL_SERVER"],
@@ -78,6 +89,9 @@ def create_app(config_class=Config):
 
             mail_handler.setLevel(logging.ERROR)
             app.logger.addHandler(mail_handler)
+            print("Email handler added successfully!")
+        else:
+            print("MAIL_SERVER not configured - email handler not initialized")
 
         if not os.path.exists("logs"):
             os.mkdir("logs")
