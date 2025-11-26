@@ -39,7 +39,11 @@ def create_app(config_class=Config):
     moment.init_app(app)
     babel.init_app(app, locale_selector=get_locale)
     app.elasticsearch = (
-        Elasticsearch([app.config["ELASTICSEARCH_URL"]])
+        Elasticsearch(
+            [app.config["ELASTICSEARCH_URL"]],
+            verify_certs=True,
+            ssl_show_warn=False
+        )
         if app.config["ELASTICSEARCH_URL"]
         else None
     )
