@@ -270,20 +270,3 @@ def notifications():
         for n in notifications
     ]
 
-@bp.route("/test-error")
-@login_required
-def test_error():
-    raise Exception("This is a test to check email")
-
-@bp.route('/reindex-posts')
-@login_required
-def reindex_posts():
-    if not current_app.elasticsearch:
-        return "Elasticsearch is not configured"
-    
-    posts = db.session.scalars(sa.select(Post)).all()
-
-    for post in posts:
-        post.reindex()
-
-    return f"Reindexed {len(posts)} posts successfully!"
