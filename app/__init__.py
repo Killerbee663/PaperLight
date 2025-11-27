@@ -42,7 +42,7 @@ def create_app(config_class=Config):
     mail.init_app(app)
     moment.init_app(app)
     babel.init_app(app, locale_selector=get_locale)
-    if app.elasticsearch:
+    if app.config["ELASTICSEARCH_URL"]:
         app.elasticsearch = Elasticsearch(
             [app.config["ELASTICSEARCH_URL"]], verify_certs=False, ssl_show_warn=False
         )
