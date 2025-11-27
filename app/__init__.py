@@ -29,7 +29,7 @@ moment = Moment()
 babel = Babel()
 
 
-transport._ProductChecker.raise_error = lambda self, state: None
+transport._ProductChecker.raise_error = lambda *args, **kwargs: None
 
 
 def create_app(config_class=Config):
